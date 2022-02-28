@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ButtonCircle extends StatelessWidget {
+class ButtonCircleWidget extends StatelessWidget {
   final IconData icon;
   final double iconSize;
   final VoidCallback onPressed;
 
-  const ButtonCircle(
+  const ButtonCircleWidget(
       {Key? key,
       required this.icon,
       required this.iconSize,
