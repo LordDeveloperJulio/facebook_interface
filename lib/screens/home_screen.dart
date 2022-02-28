@@ -5,6 +5,7 @@ import 'package:line_icons/line_icons.dart';
 import '../data/data.dart';
 import '../utils/color_palette.dart';
 import '../widgets/button_circle_widget.dart';
+import '../widgets/story_area_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -48,6 +49,15 @@ class _HomeScreenState extends State<HomeScreen> {
           SliverToBoxAdapter(
             child: CreatePostAreaWidget(
               user: currentUser,
+            ),
+          ),
+          SliverPadding(
+            padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+            sliver: SliverToBoxAdapter(
+              child: StoryAreaWidget(
+                user: currentUser,
+                storysList: storysList,
+              ),
             ),
           ),
         ],

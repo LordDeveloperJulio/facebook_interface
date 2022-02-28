@@ -1,4 +1,5 @@
 /* Usuário Logado */
+import 'package:facebook_interface/models/story.dart';
 import 'package:facebook_interface/models/user.dart';
 
 User currentUser = User(
@@ -31,4 +32,36 @@ List<User> onlineUser = [
   User(
       name: "Pedro do Carmo",
       urlImage: "https://source.unsplash.com/9ChfwZzv4ys/800x600"),
+];
+
+/* Lista de estórias */
+List<Story> storysList = [
+  Story(
+    user: onlineUser[0],
+    urlImage: "https://source.unsplash.com/JMWjOup32Fk/800x600",
+    isVisualized: true,
+  ),
+  Story(
+    user: onlineUser[1],
+    urlImage: "https://source.unsplash.com/no_TCkPUq_s/800x600",
+    isVisualized: true,
+  ),
+  Story(
+      user: onlineUser[2],
+      urlImage: "https://source.unsplash.com/6dX5TPPM34M/800x600"),
+  Story(
+      user: onlineUser[3],
+      urlImage: "https://source.unsplash.com/PO7CGnoDFUI/800x600"),
+  Story(
+      user: onlineUser[4],
+      urlImage: "https://source.unsplash.com/rewyZqUwAqY/800x600"),
+  Story(
+      user: onlineUser[5],
+      urlImage: "https://source.unsplash.com/1HpQU1evGK8/800x600"),
+  Story(
+      user: onlineUser[6],
+      urlImage: "https://source.unsplash.com/W9z_628BBpc/800x600"),
+  Story(
+      user: onlineUser[7],
+      urlImage: "https://source.unsplash.com/DOb-2jd0sbc/800x600"),
 ];
