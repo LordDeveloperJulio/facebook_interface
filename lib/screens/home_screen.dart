@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
 import '../data/data.dart';
+import '../models/post.dart';
 import '../utils/color_palette.dart';
 import '../widgets/button_circle_widget.dart';
+import '../widgets/post_card_widget.dart';
 import '../widgets/story_area_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -58,6 +60,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 user: currentUser,
                 storysList: storysList,
               ),
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                Post post = posts[index];
+
+                return PostCardWidget(
+                  post: post,
+                );
+              },
+              childCount: posts.length,
             ),
           ),
         ],
