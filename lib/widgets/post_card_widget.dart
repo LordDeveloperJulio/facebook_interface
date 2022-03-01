@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
 import '../models/post.dart';
+import '../utils/responsive.dart';
 
 class PostCardWidget extends StatelessWidget {
   final Post post;
@@ -13,38 +14,45 @@ class PostCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      margin: EdgeInsets.symmetric(vertical: 8),
-      padding: EdgeInsets.symmetric(vertical: 8),
-      child: Column(
-        children: [
-          //cabeçalho
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                PostHeader(
-                  post: post,
-                ),
-                Text(post.description),
-              ],
+    bool isDesktop = Responsive.isDesktop(context);
+    return Card(
+      margin: EdgeInsets.symmetric(vertical: 8, horizontal: isDesktop ? 5 : 0),
+      elevation: isDesktop ? 1 : 0,
+      shape: isDesktop
+          ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+          : null,
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 8),
+        padding: EdgeInsets.symmetric(vertical: 8),
+        child: Column(
+          children: [
+            //cabeçalho
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  PostHeader(
+                    post: post,
+                  ),
+                  Text(post.description),
+                ],
+              ),
             ),
-          ),
-          //imagem da postagem
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 8),
-            child: CachedNetworkImage(imageUrl: post.urlImage),
-          ),
-          //area de estatisticas
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            child: StatisticPost(
-              post: post,
+            //imagem da postagem
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 8),
+              child: CachedNetworkImage(imageUrl: post.urlImage),
             ),
-          ),
-        ],
+            //area de estatisticas
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              child: StatisticPost(
+                post: post,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -20,23 +20,38 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final TrackingScrollController _scrollController = TrackingScrollController();
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Responsive(
-        mobile: HomeMobile(),
-        desktop: HomeDesktop(),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        body: Responsive(
+          mobile: HomeMobile(scrollController: _scrollController),
+          desktop: HomeDesktop(scrollController: _scrollController),
+        ),
       ),
     );
   }
 }
 
 class HomeMobile extends StatelessWidget {
-  const HomeMobile({Key? key}) : super(key: key);
+  final TrackingScrollController scrollController;
+
+  const HomeMobile({Key? key, required this.scrollController})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
+      controller: scrollController,
       slivers: [
         SliverAppBar(
           backgroundColor: Colors.white,
@@ -96,7 +111,10 @@ class HomeMobile extends StatelessWidget {
 }
 
 class HomeDesktop extends StatelessWidget {
-  const HomeDesktop({Key? key}) : super(key: key);
+  final TrackingScrollController scrollController;
+
+  const HomeDesktop({Key? key, required this.scrollController})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -115,6 +133,7 @@ class HomeDesktop extends StatelessWidget {
         Flexible(
           flex: 5,
           child: CustomScrollView(
+            controller: scrollController,
             slivers: [
               SliverPadding(
                 padding: EdgeInsets.fromLTRB(0, 10, 0, 5),

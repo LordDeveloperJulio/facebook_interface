@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:facebook_interface/data/data.dart';
 import 'package:facebook_interface/models/story.dart';
 import 'package:facebook_interface/utils/color_palette.dart';
+import 'package:facebook_interface/utils/responsive.dart';
 import 'package:facebook_interface/widgets/profile_image_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -17,9 +18,10 @@ class StoryAreaWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDesktop = Responsive.isDesktop(context);
     return Container(
       height: 200,
-      color: Colors.white,
+      color: isDesktop ? Colors.transparent : Colors.white,
       child: ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
         scrollDirection: Axis.horizontal,
