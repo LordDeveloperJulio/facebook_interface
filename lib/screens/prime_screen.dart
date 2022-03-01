@@ -54,15 +54,17 @@ class _PrimeScreenState extends State<PrimeScreen> {
           physics: NeverScrollableScrollPhysics(),
           children: screens,
         ),
-        bottomNavigationBar: TabsNavigationWidget(
-          tabSelecioned: tabSelecioned,
-          icons: icons,
-          onTap: (index) {
-            setState(() {
-              tabSelecioned = index;
-            });
-          },
-        ),
+        bottomNavigationBar: isDesktop
+            ? null
+            : TabsNavigationWidget(
+                tabSelecioned: tabSelecioned,
+                icons: icons,
+                onTap: (index) {
+                  setState(() {
+                    tabSelecioned = index;
+                  });
+                },
+              ),
       ),
     );
   }
