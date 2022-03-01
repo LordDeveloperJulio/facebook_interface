@@ -1,4 +1,4 @@
-import 'package:facebook_interface/screens/home_screen.dart';
+import 'package:facebook_interface/screens/prime_screen.dart';
 import 'package:facebook_interface/utils/color_palette.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +7,7 @@ void main() {
     title: "Facebook",
     debugShowCheckedModeBanner: false,
     theme: ThemeData(scaffoldBackgroundColor: ColorPallete.scaffold),
-    home: HomeScreen(),
+    //home: HomeScreen(),
+    home: PrimeScreen(),
   ));
 }
