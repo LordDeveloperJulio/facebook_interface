@@ -8,6 +8,7 @@ import '../models/post.dart';
 import '../utils/color_palette.dart';
 import '../widgets/button_circle_widget.dart';
 import '../widgets/contacts_list_widget.dart';
+import '../widgets/list_of_options_widget.dart';
 import '../widgets/post_card_widget.dart';
 import '../widgets/story_area_widget.dart';
 
@@ -102,10 +103,14 @@ class HomeDesktop extends StatelessWidget {
     return Row(
       children: [
         Flexible(
-            flex: 2,
-            child: Container(
-              color: Colors.red,
-            )),
+          flex: 2,
+          child: Padding(
+            padding: EdgeInsets.all(12),
+            child: ListOfOptionsWidget(
+              user: currentUser,
+            ),
+          ),
+        ),
         Spacer(),
         Flexible(
           flex: 5,

@@ -13,21 +13,24 @@ class ButtonImageProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        ProfileImageWidget(urlImage: user.urlImage, isVisualized: true),
-        SizedBox(
-          width: 4,
-        ),
-        Flexible(
-          child: Text(
-            user.name,
-            style: TextStyle(fontSize: 16),
-            overflow: TextOverflow.ellipsis,
+    return InkWell(
+      onTap: onTap,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ProfileImageWidget(urlImage: user.urlImage, isVisualized: true),
+          SizedBox(
+            width: 4,
           ),
-        ),
-      ],
+          Flexible(
+            child: Text(
+              user.name,
+              style: TextStyle(fontSize: 16),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
