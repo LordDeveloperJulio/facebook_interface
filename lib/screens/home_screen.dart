@@ -7,6 +7,7 @@ import '../data/data.dart';
 import '../models/post.dart';
 import '../utils/color_palette.dart';
 import '../widgets/button_circle_widget.dart';
+import '../widgets/contacts_list_widget.dart';
 import '../widgets/post_card_widget.dart';
 import '../widgets/story_area_widget.dart';
 
@@ -98,32 +99,55 @@ class HomeDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverPadding(
-          padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
-          sliver: SliverToBoxAdapter(
-            child: StoryAreaWidget(
-              user: currentUser,
-              storysList: storysList,
-            ),
-          ),
-        ),
-        SliverToBoxAdapter(
-          child: CreatePostAreaWidget(
-            user: currentUser,
-          ),
-        ),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) {
-              Post post = posts[index];
+    return Row(
+      children: [
+        Flexible(
+            flex: 2,
+            child: Container(
+              color: Colors.red,
+            )),
+        Spacer(),
+        Flexible(
+          flex: 5,
+          child: CustomScrollView(
+            slivers: [
+              SliverPadding(
+                padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+                sliver: SliverToBoxAdapter(
+                  child: StoryAreaWidget(
+                    user: currentUser,
+                    storysList: storysList,
+                  ),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: CreatePostAreaWidget(
+                  user: currentUser,
+                ),
+              ),
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    Post post = posts[index];
 
-              return PostCardWidget(
-                post: post,
-              );
-            },
-            childCount: posts.length,
+                    return PostCardWidget(
+                      post: post,
+                    );
+                  },
+                  childCount: posts.length,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Spacer(),
+        Flexible(
+          flex: 2,
+          child: Padding(
+            padding: EdgeInsets.all(12),
+            child: ContactsListWidget(
+              userList: onlineUser,
+            ),
           ),
         ),
       ],
