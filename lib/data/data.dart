@@ -5,7 +5,7 @@ import 'package:facebook_interface/models/user.dart';
 import '../models/post.dart';
 
 User currentUser = User(
-    name: "Jamilton Damasceno",
+    name: "Júlio Furtado",
     urlImage: "https://source.unsplash.com/EQFtEzJGERg/800x600");
 
 /* Lista de usuários online */
