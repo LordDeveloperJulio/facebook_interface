@@ -1,4 +1,5 @@
 import 'package:facebook_interface/screens/home_screen.dart';
+import 'package:facebook_interface/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -44,6 +45,8 @@ class _PrimeScreenState extends State<PrimeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final bool isDesktop = Responsive.isDesktop(context);
+
     return DefaultTabController(
       length: icons.length,
       child: Scaffold(

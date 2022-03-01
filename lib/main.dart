@@ -7,7 +7,6 @@ void main() {
     title: "Facebook",
     debugShowCheckedModeBanner: false,
     theme: ThemeData(scaffoldBackgroundColor: ColorPallete.scaffold),
-    //home: HomeScreen(),
     home: PrimeScreen(),
   ));
 }
